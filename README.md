@@ -55,9 +55,9 @@ The server should now be running locally on http://localhost:8080. You can use t
 	
 	go-chi-pg-sqlc-goose-template/
 	├── cmd/
-	│ └── main.go # Entrypoint for the server
+	│ └── main.go 			# Entrypoint for the server
 	├── models/
-	│ └── shared.go # Configuration settings
+	│ └── shared.go 		# Configuration settings
 	├── sql/
 	│ ├── database			# SQLC Query output methods 
 	│ ├── queries			# SQLC queries files
