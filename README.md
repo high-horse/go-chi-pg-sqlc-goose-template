@@ -51,22 +51,25 @@ This is a template project for building a RESTful API server in Go using the fol
 The server should now be running locally on http://localhost:8080. You can use tools like Postman or curl to interact with the API endpoints.
 
 ### Project Structure
-go-chi-pg-sqlc-goose-template/
-├── cmd/
-│ └── main.go # Entrypoint for the server
-├── models/
-│ └── shared.go # Configuration settings
-├── sql/
-│ ├── database			# SQLC Query output methods 
-│ ├── queries			# SQLC queries files
-│ └── schema			# SQL schema files
-├── sqlc.yaml 			# SQLC configuration file
-├── helper/
-│ └──passwords.go		# Password encryption and decryption 
-├── handler/ 			# HTTP request handlers
-│ └── util.go
-├── middleware/ 		# HTTP middleware
-│ └── logger.go 		# Request logger middleware
-├── go.mod
-├── go.sum
-└── README.md
+
+	```bash
+	go-chi-pg-sqlc-goose-template/
+	├── cmd/
+	│ └── main.go # Entrypoint for the server
+	├── models/
+	│ └── shared.go # Configuration settings
+	├── sql/
+	│ ├── database			# SQLC Query output methods 
+	│ ├── queries			# SQLC queries files
+	│ └── schema			# SQL schema files
+	├── sqlc.yaml 			# SQLC configuration file
+	├── helper/
+	│ └──passwords.go		# Password encryption and decryption 
+	├── handler/ 			# HTTP request handlers
+	│ └── util.go
+	├── middleware/ 		# HTTP middleware
+	│ └── logger.go 		# Request logger middleware
+	├── go.mod
+	├── go.sum
+	└── README.md
+	```
