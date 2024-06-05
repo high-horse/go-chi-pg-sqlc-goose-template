@@ -52,7 +52,7 @@ The server should now be running locally on http://localhost:8080. You can use t
 
 ### Project Structure
 
-	```bash
+	
 	go-chi-pg-sqlc-goose-template/
 	├── cmd/
 	│ └── main.go # Entrypoint for the server
@@ -72,4 +72,4 @@ The server should now be running locally on http://localhost:8080. You can use t
 	├── go.mod
 	├── go.sum
 	└── README.md
-	```
+	
