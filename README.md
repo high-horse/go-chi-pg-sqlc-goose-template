@@ -26,7 +26,7 @@ This project template sets up a Go application with key features like database m
 ## Project Structure
 
 Here's a brief overview of the project's directory structure:
-
+```sh
 project-root/
 |-- cmd/
 | |-- main.go // Main application entry point
@@ -43,8 +43,8 @@ project-root/
 |-- go.mod // Go module file
 |-- go.sum // Go dependencies file
 |-- README.md // Project documentation
+```
 
-markdown
 
 
 ## Installation and Setup
