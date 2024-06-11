@@ -90,7 +90,7 @@ cd yourproject
 go mod tidy
 ```
 
-#Install sqlc and goose:
+#### Install sqlc and goose:
 
 ```sh
 
