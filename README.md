@@ -29,20 +29,38 @@ Here's a brief overview of the project's directory structure:
 ```sh
 project-root/
 |-- cmd/
-| |-- main.go // Main application entry point
-|-- config/
-| |-- config.go // Configuration handling
-|-- internal/
-| |-- db/ // Database-related logic
-| | |-- migrations/ // SQL migration files
-| | |-- queries.sql // SQL queries for sqlc
-| |-- handler/ // HTTP handlers and middleware
-| |-- logger/ // Logging setup
+| |-- main.go 		// Main application entry point
+|-- http/
+| |-- handlers/
+| |--|-- user_handler/
+| |--|--|-- user_handler.go
+| |--|--|-- user_model.go
+| |--|-- util/
+| |--|--|-- util.go
+| |-- helper/
+| |--|-- cookies.go
+| |--|-- jwt.go
+| |--|-- passwords.go
+| |-- middleware/
+| |--|-- jwtMiddleware.go
+| |--|-- logger.go
+| |-- response/
+| |--|-- response.go
+| |-- router/
+| |--|-- router.go
+|-- init/
+| |-- db.go
 |-- sql/
-| |-- schema/ // Database schema and migrations
-|-- go.mod // Go module file
-|-- go.sum // Go dependencies file
-|-- README.md // Project documentation
+| |-- database/ 
+| |--|-- db.go
+| |--|-- models.go
+| |--|-- users.sql.go
+| |-- queries/ 
+| |--|-- users.sql
+| |-- schema/ 
+| |--|-- 001_users.sql
+|-- Makefile
+|-- README.md 		// Project documentation
 ```
 
 
@@ -130,14 +148,11 @@ Middleware
 Middleware is managed in the internal/handler/ package. Middleware functions provide a way to process requests and responses, and can be used for tasks like authentication, logging, and error handling.
 Additional Notes
 
-    Ensure your database is running and accessible before running migrations or starting the application.
-    Customize the project structure and components to fit the needs of your application.
-    Refer to the documentation of tools like sqlc and goose for advanced usage and configuration options.
+Ensure your database is running and accessible before running migrations or starting the application.
+Customize the project structure and components to fit the needs of your application.
+Refer to the documentation of tools like sqlc and goose for advanced usage and configuration options.
 
 Feel free to modify this README.md as needed to better fit the specifics of your project.
-
-css
-
 
 This template provides a comprehensive guide to setting up and running a Go project with the mentioned components. Adjust the details according to your project's requirements and structure.
 
