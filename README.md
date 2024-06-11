@@ -1,7 +1,6 @@
 
 # Template for GO Project.
 
-A brief description of your project.
 
 ## Table of Contents
 
@@ -99,7 +98,7 @@ go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 go install github.com/pressly/goose/v3/cmd/goose@latest
 ```
 
-#Database Setup
+#### Database Setup
 
 Configure your database connection in the .env file or directly in your configuration. The default PostgreSQL connection string looks like this:
 
@@ -107,7 +106,7 @@ Configure your database connection in the .env file or directly in your configur
 postgres://postgres:root@localhost:5432/attempt2
 ```
 
-#Running Migrations
+#### Running Migrations
 
 To apply all pending migrations, run:
 
@@ -122,7 +121,7 @@ To roll back the last migration, run:
 
 make goose_down
 ```
-#Code Generation
+#### Code Generation
 
 Generate Go code from SQL queries using sqlc:
 
@@ -133,7 +132,8 @@ sqlc generate
 This will generate Go code based on the SQL queries defined in internal/db/queries.sql.
 Running the Application
 
-#To start the application, use the following command:
+#### Run
+To start the application, use the following command:
 
 ```sh
 
