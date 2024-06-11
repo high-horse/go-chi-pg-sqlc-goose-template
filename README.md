@@ -1,5 +1,5 @@
 
-# Project Name
+# Template for GO Project.
 
 A brief description of your project.
 
