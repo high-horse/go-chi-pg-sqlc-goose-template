@@ -1,57 +1,48 @@
 package main
 
 import (
-	"database/sql"
+	// "database/sql"
 	"log"
 	"net/http"
 	"os"
-	"server/sql/database"
-	"server/router"
-	"server/models"
+
+	// "os"
+	// "server/http/router"
+	db "server/init"
+	router"server/http/router"
 
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
 
-type DBConfig struct {
-	DB *database.Queries
-}
 
 func main() {
 	err := godotenv.Load();
 	if err != nil {
 		log.Fatal("ERROR loading env :",err)
 	}
+	
+	err = db.ConnectDB() 
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
+
+	defer db.DisconnectDB()
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("PORT must be set")
+		port = "8080"
 	}
 
-	dbURL := os.Getenv("DB_URL")
-	if dbURL == "" {
-		log.Fatal("DB_URL must be set")
-	}
-
-	conn, err := sql.Open("postgres", dbURL)
-	if err != nil {
-		log.Fatal("ERROR connectiong to database :",err)
-	}
-
-	db := database.New(conn)
-	dbConfig  := models.DBConfig{
-		DB: db,
-	}
-
-	serve(dbConfig, port)
+	serve(port)
 
 }
 
 
-func serve(dbConfig models.DBConfig, port string) {
+func serve(port string) {
 
-	router := router.InitRouter(dbConfig)
+	router := router.InitRouter()
 
 	server := &http.Server{
 		Handler: router,

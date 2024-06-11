@@ -2,7 +2,7 @@ package util
 
 import (
 	"net/http"
-	"server/response"
+	"server/http/response"
 )
 
 

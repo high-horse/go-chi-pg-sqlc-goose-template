@@ -2,17 +2,17 @@ package router
 
 import (
 	"net/http"
-	// "server/sql/database"
-	md "server/middleware"
-	"server/handlers/util"
-	"server/models"
+	userhandler "server/http/handlers/user_handler"
+	"server/http/handlers/util"
+	md "server/http/middleware"
+	// "server/models"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
 )
 
 
-func InitRouter(apiCfg models.DBConfig) http.Handler {
+func InitRouter() http.Handler {
 
 	router := chi.NewRouter()
 	router.Use(md.Logger)
@@ -29,7 +29,7 @@ func InitRouter(apiCfg models.DBConfig) http.Handler {
 	v1Router := chi.NewRouter()
 
 	registerUtilRoutes(v1Router)
-	// registerUserRoutes(v1Router, apiCfg)
+	registerUserRoutes(v1Router)
 	// registerFeedRoutes(v1Router, apiCfg)
 
 	router.Mount("/v1", v1Router)
@@ -43,11 +43,15 @@ func registerUtilRoutes(r chi.Router) {
 	r.Get("/err", util.HandleErr)
 }
 
-// func registerUserRoutes(r chi.Router, apiCfg config.ApiConfig) {
-// 	r.Post("/user", apiCfg.handlerCreateUser)
-// 	r.Get("/user", apiCfg.middlewareAuth(apiCfg.handlerGetUser))
-// 	r.Get("/posts", apiCfg.middlewareAuth(apiCfg.handlerGetPostsForUser))
-// }
+func registerUserRoutes(r chi.Router) {
+
+	r.Post("/register", userhandler.HandlerCreateUser)
+	r.Post("/login", userhandler.HandlerLogin)
+	r.With(md.JWTMiddleware).Post("/logout", userhandler.LogOut)
+	r.With(md.JWTMiddleware).Get("/status", userhandler.CheckStatus)
+	// r.Get("/user", dbCfg.middlewareAuth(dbCfg.handlerGetUser))
+	// r.Get("/posts", dbCfg.middlewareAuth(dbCfg.handlerGetPostsForUser))
+}
 
 // func registerFeedRoutes(r chi.Router, apiCfg config.ApiConfig) {
 // 	r.Post("/feed", apiCfg.middlewareAuth(apiCfg.handlerCreateFeed))

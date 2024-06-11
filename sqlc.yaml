@@ -5,6 +5,4 @@ sql:
     schema: "sql/schema"
     gen:
       go:
-        # package: "tutorial"
-        # out: "tutorial"
         out: "sql/database"
